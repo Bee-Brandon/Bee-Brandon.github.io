@@ -59,6 +59,29 @@
             text-decoration: underline;
         }
 
+        /* Nav Links */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .nav-links a {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
         /* Main */
         main {
             max-width: 1100px;
@@ -288,6 +311,10 @@
             <span>📍 Los Angeles, CA</span>
             <a href="mailto:beeoperations100@gmail.com">📧 beeoperations100@gmail.com</a>
             <a href="https://github.com/Bee-Brandon" target="_blank">GitHub</a>
+        </div>
+        <div class="nav-links">
+            <a href="services.html">Services</a>
+            <a href="case-study.html">Case Study</a>
         </div>
     </header>
 

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Services | Brandon Daniel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f8fafc;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header .back-link {
+            display: inline-block;
+            color: #60a5fa;
+            text-decoration: none;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        header .back-link:hover {
+            text-decoration: underline;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Intro */
+        .intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 48px;
+        }
+
+        .intro p {
+            font-size: 1.15rem;
+            color: #4a5568;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #4f46e5;
+        }
+
+        .service-card.green {
+            border-top-color: #10b981;
+        }
+
+        .service-card.orange {
+            border-top-color: #f59e0b;
+        }
+
+        .service-card.purple {
+            border-top-color: #8b5cf6;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #4a5568;
+            margin-bottom: 16px;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .service-card li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        .service-card li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #4f46e5;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .process-section h2 {
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+
+        .step h4 {
+            font-size: 1rem;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            margin-bottom: 48px;
+        }
+
+        .pricing-section h2 {
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #4f46e5;
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4f46e5;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.15rem;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4f46e5;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price-note {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .pricing-card li {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .pricing-card .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .pricing-card .btn-primary {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .pricing-card .btn-secondary {
+            background: #e2e8f0;
+            color: #1a1a2e;
+        }
+
+        .pricing-card .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            text-align: center;
+            padding: 48px 40px;
+            border-radius: 16px;
+        }
+
+        .cta-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        .cta-section .btn {
+            display: inline-block;
+            background: white;
+            color: #4f46e5;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-section .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+        <h1>Automation Services</h1>
+        <p class="subtitle">I find the repetitive tasks eating your team's time and build bots to eliminate them.</p>
+    </header>
+
+    <main>
+        <div class="intro">
+            <p>
+                Your team is spending hours on tasks that could be done in seconds.
+                Data entry, form filling, report generation, system navigation - all of it can be automated.
+                I build custom solutions that give your staff their time back.
+            </p>
+        </div>
+
+        <!-- Services -->
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Workflow Automation</h3>
+                <p>Automate multi-step processes that span multiple systems or screens.</p>
+                <ul>
+                    <li>Login and navigation automation</li>
+                    <li>Form filling across systems</li>
+                    <li>Data transfer between platforms</li>
+                    <li>Multi-step approval workflows</li>
+                </ul>
+            </div>
+
+            <div class="service-card green">
+                <h3>Data Entry Automation</h3>
+                <p>Stop manually entering the same information into multiple systems.</p>
+                <ul>
+                    <li>Copy data between systems automatically</li>
+                    <li>Bulk data processing</li>
+                    <li>Error checking and validation</li>
+                    <li>Report generation from data</li>
+                </ul>
+            </div>
+
+            <div class="service-card orange">
+                <h3>Document Processing</h3>
+                <p>Extract data from documents and put it where it needs to go.</p>
+                <ul>
+                    <li>PDF data extraction</li>
+                    <li>Form scanning and processing</li>
+                    <li>Document classification</li>
+                    <li>Automated filing and organization</li>
+                </ul>
+            </div>
+
+            <div class="service-card purple">
+                <h3>AI-Powered Tools</h3>
+                <p>Use AI to handle tasks that require understanding context.</p>
+                <ul>
+                    <li>Intelligent search and lookup</li>
+                    <li>Text generation and formatting</li>
+                    <li>Classification and categorization</li>
+                    <li>Natural language interfaces</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Process -->
+        <section class="process-section">
+            <h2>How It Works</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Discovery</h4>
+                    <p>I watch how your team works and identify the biggest time wasters.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Design</h4>
+                    <p>I map out the automation and confirm the approach with you.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Build</h4>
+                    <p>I build the automation with testing and safeguards built in.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Deploy</h4>
+                    <p>I train your team and hand off the working solution.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="pricing-section">
+            <h2>Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Small Automation</h3>
+                    <div class="price">$300-500</div>
+                    <div class="price-note">One-time fee</div>
+                    <ul>
+                        <li>Single workflow automation</li>
+                        <li>Up to 10 steps</li>
+                        <li>Basic error handling</li>
+                        <li>Documentation included</li>
+                        <li>1 week turnaround</li>
+                    </ul>
+                    <a href="mailto:beeoperations100@gmail.com?subject=Small%20Automation%20Inquiry" class="btn btn-secondary">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Medium Project</h3>
+                    <div class="price">$750-1,500</div>
+                    <div class="price-note">One-time fee</div>
+                    <ul>
+                        <li>2-3 connected workflows</li>
+                        <li>Complex logic and conditions</li>
+                        <li>Full error handling</li>
+                        <li>Training session included</li>
+                        <li>2-3 week turnaround</li>
+                    </ul>
+                    <a href="mailto:beeoperations100@gmail.com?subject=Medium%20Project%20Inquiry" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Full Process Overhaul</h3>
+                    <div class="price">$2,000+</div>
+                    <div class="price-note">Custom quote</div>
+                    <ul>
+                        <li>End-to-end process automation</li>
+                        <li>Multiple integrations</li>
+                        <li>AI capabilities included</li>
+                        <li>Ongoing support available</li>
+                        <li>Custom timeline</li>
+                    </ul>
+                    <a href="mailto:beeoperations100@gmail.com?subject=Full%20Process%20Overhaul%20Inquiry" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>Not Sure What You Need?</h2>
+            <p>
+                Let's talk. Tell me what's eating your team's time, and I'll tell you if automation can help.
+                No pressure, no obligation.
+            </p>
+            <a href="mailto:beeoperations100@gmail.com?subject=Automation%20Consultation" class="btn">Schedule a Free Consultation</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            <a href="index.html">← Back to Portfolio</a> ·
+            <a href="case-study.html">View Case Study</a> ·
+            <a href="https://github.com/Bee-Brandon" target="_blank">GitHub</a>
+        </p>
+    </footer>
+</body>
+</html>

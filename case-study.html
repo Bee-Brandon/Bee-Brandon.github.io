@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: CalJOBS Automation | Brandon Daniel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #f8fafc;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header .back-link {
+            display: inline-block;
+            color: #60a5fa;
+            text-decoration: none;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        header .back-link:hover {
+            text-decoration: underline;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        section h3 {
+            font-size: 1.15rem;
+            color: #4f46e5;
+            margin: 24px 0 12px;
+        }
+
+        p {
+            color: #4a5568;
+            margin-bottom: 16px;
+        }
+
+        ul, ol {
+            color: #4a5568;
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: #f0fdf4;
+            border-left: 4px solid #10b981;
+            padding: 20px 24px;
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+        }
+
+        .highlight-box.blue {
+            background: #eff6ff;
+            border-left-color: #3b82f6;
+        }
+
+        .highlight-box.purple {
+            background: #f5f3ff;
+            border-left-color: #8b5cf6;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #1a1a2e;
+        }
+
+        .highlight-box strong {
+            color: #059669;
+        }
+
+        .highlight-box.blue strong {
+            color: #2563eb;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 24px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 4px;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        td {
+            color: #4a5568;
+        }
+
+        /* Tech Tags */
+        .tech-stack {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+
+        .tech-tag {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            text-align: center;
+            padding: 48px 40px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border: none;
+            padding: 0;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+
+        .cta-section .btn {
+            display: inline-block;
+            background: white;
+            color: #4f46e5;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-section .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        /* Before/After comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        @media (max-width: 600px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-card {
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .comparison-card.before {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        .comparison-card.after {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+
+        .comparison-card h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .comparison-card.before h4 {
+            color: #dc2626;
+        }
+
+        .comparison-card.after h4 {
+            color: #16a34a;
+        }
+
+        .comparison-card ul {
+            margin: 0;
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .comparison-card li {
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .comparison-card.before li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #dc2626;
+        }
+
+        .comparison-card.after li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #16a34a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+        <h1>Case Study: CalJOBS Automation</h1>
+        <p class="subtitle">Reducing documentation time by 80% at East LA AJCC</p>
+    </header>
+
+    <main>
+        <!-- Overview -->
+        <section>
+            <h2>Overview</h2>
+            <p>
+                Business Service Representatives at California's America's Job Centers spend hours each week on
+                CalJOBS documentation - the state's workforce development case management system. I built two
+                tools that automate the most time-consuming parts of this work.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">90%</div>
+                    <div class="label">Reduction in code lookup time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">12.5 hrs</div>
+                    <div class="label">Saved per week (5-person team)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">$16,250</div>
+                    <div class="label">Annual productivity recovered</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Problem -->
+        <section>
+            <h2>The Problem</h2>
+            <p>
+                Staff were losing significant time to two repetitive workflows:
+            </p>
+
+            <h3>1. Activity Code Lookup</h3>
+            <p>
+                CalJOBS has 326+ activity codes. Every client interaction needs to be logged with the correct code.
+                Staff would scroll through lists, consult printed guides, or ask colleagues - often taking 2-5 minutes
+                just to find the right code.
+            </p>
+
+            <h3>2. Activity Creation Workflow</h3>
+            <p>
+                Creating a single activity record required <strong>30+ clicks</strong> across 7 different screens:
+            </p>
+            <ol>
+                <li>Login and navigation to client search</li>
+                <li>Search for participant by State ID</li>
+                <li>Navigate through Staff Profiles → Case Management → Programs</li>
+                <li>Find the correct WIOA program entry</li>
+                <li>Open Activities section</li>
+                <li>Fill form fields (Program Group, Office, Agency, Grant, Activity Code, Dates)</li>
+                <li>Add case notes with Subject Line and Description</li>
+            </ol>
+
+            <div class="highlight-box">
+                <p><strong>Time cost per activity: 5-8 minutes</strong> of clicking, waiting, and typing the same information repeatedly.</p>
+            </div>
+        </section>
+
+        <!-- The Solution -->
+        <section>
+            <h2>The Solution</h2>
+
+            <h3>Tool 1: CalJOBS Code Assistant</h3>
+            <p>
+                A web-based AI assistant that eliminates code lookup time:
+            </p>
+            <ul>
+                <li><strong>AI Code Suggestions</strong> - Describe what you did in plain English, get the correct code</li>
+                <li><strong>Case Note Generator</strong> - Select a code, instantly get formatted Subject Line + Description</li>
+                <li><strong>Quick Actions</strong> - One-click access to most common codes</li>
+                <li><strong>Fuzzy Search</strong> - Type partial words, find matching codes instantly</li>
+            </ul>
+
+            <div class="highlight-box blue">
+                <p><strong>Example:</strong> Staff types "helped client with resume" → AI suggests Code 115 (Resume Preparation) → Click to generate case note ready to paste.</p>
+            </div>
+
+            <h3>Tool 2: CalJOBS Automation Bot</h3>
+            <p>
+                A 7-phase automation that handles the entire activity creation workflow:
+            </p>
+
+            <table>
+                <tr>
+                    <th>Phase</th>
+                    <th>What It Automates</th>
+                </tr>
+                <tr>
+                    <td>1. Login</td>
+                    <td>Authenticates to CalJOBS securely</td>
+                </tr>
+                <tr>
+                    <td>2. Search</td>
+                    <td>Enters State ID, finds participant</td>
+                </tr>
+                <tr>
+                    <td>3. Navigate</td>
+                    <td>Clicks through to Case Management → Programs</td>
+                </tr>
+                <tr>
+                    <td>4. Find WIOA</td>
+                    <td>Locates the correct program entry</td>
+                </tr>
+                <tr>
+                    <td>5. Activities</td>
+                    <td>Opens the Activities section</td>
+                </tr>
+                <tr>
+                    <td>6. Fill Form</td>
+                    <td>Selects all dropdowns, enters dates</td>
+                </tr>
+                <tr>
+                    <td>7. Finalize</td>
+                    <td>Adds case note, saves, confirms</td>
+                </tr>
+            </table>
+
+            <p style="margin-top: 20px;">
+                <strong>Key features:</strong> Real-time progress display, review page before submission,
+                demo mode for safe testing, error handling with screenshots.
+            </p>
+        </section>
+
+        <!-- Technical Implementation -->
+        <section>
+            <h2>Technical Implementation</h2>
+
+            <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Streamlit</span>
+                <span class="tech-tag">Playwright</span>
+                <span class="tech-tag">Claude AI API</span>
+                <span class="tech-tag">Fuzzy Matching</span>
+                <span class="tech-tag">Windows Credential Manager</span>
+            </div>
+
+            <h3>Architecture Decisions</h3>
+            <ul>
+                <li><strong>Web-based interface</strong> - No installation required, staff access via browser</li>
+                <li><strong>Local deployment</strong> - Runs on office network, no client data leaves premises</li>
+                <li><strong>AI with embedded context</strong> - All 326 codes in prompt for accurate suggestions</li>
+                <li><strong>Secure credentials</strong> - Passwords stored in Windows Credential Manager, never plaintext</li>
+                <li><strong>Demo mode by default</strong> - Bot won't touch real data until explicitly enabled</li>
+            </ul>
+        </section>
+
+        <!-- Results -->
+        <section>
+            <h2>Results</h2>
+
+            <div class="comparison">
+                <div class="comparison-card before">
+                    <h4>Before</h4>
+                    <ul>
+                        <li>2-5 min to find correct code</li>
+                        <li>2-3 min to write case note</li>
+                        <li>30+ clicks per activity</li>
+                        <li>5-8 min per activity total</li>
+                        <li>Frequent wrong code selections</li>
+                    </ul>
+                </div>
+                <div class="comparison-card after">
+                    <h4>After</h4>
+                    <ul>
+                        <li>10 seconds to find code</li>
+                        <li>10 seconds for case note</li>
+                        <li>0 clicks (automated)</li>
+                        <li>~40 seconds per activity</li>
+                        <li>AI suggests correct codes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>ROI Calculation</h3>
+            <p>For a 5-person team creating 10 activities per day each:</p>
+
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Code Assistant Only</th>
+                    <th>With Automation Bot</th>
+                </tr>
+                <tr>
+                    <td>Time saved per activity</td>
+                    <td>3 minutes</td>
+                    <td>5 minutes</td>
+                </tr>
+                <tr>
+                    <td>Weekly time saved</td>
+                    <td>12.5 hours</td>
+                    <td>20.8 hours</td>
+                </tr>
+                <tr>
+                    <td>Annual time saved</td>
+                    <td>650 hours</td>
+                    <td>1,081 hours</td>
+                </tr>
+                <tr>
+                    <td>Annual value (at $25/hr)</td>
+                    <td><strong>$16,250</strong></td>
+                    <td><strong>$27,000</strong></td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>Interested in Similar Results?</h2>
+            <p>
+                I help organizations automate repetitive workflows and documentation tasks.
+                Let's talk about what's eating your team's time.
+            </p>
+            <a href="mailto:beeoperations100@gmail.com" class="btn">Get in Touch</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            <a href="index.html">← Back to Portfolio</a> ·
+            <a href="services.html">View Services</a> ·
+            <a href="https://github.com/Bee-Brandon" target="_blank">GitHub</a>
+        </p>
+    </footer>
+</body>
+</html>
